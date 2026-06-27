@@ -1,0 +1,8 @@
+.page-content {
+  max-width: 1600px;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
