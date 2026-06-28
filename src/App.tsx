@@ -23,8 +23,7 @@ type QuoteItem = {
   compliance: string
   isValid: boolean
   errors: string[]
-  lineTotal: number | null
-  normalizedUnit: string
+  discountPercent: number
 }
 
 type QuoteImportSummary = {
@@ -37,7 +36,7 @@ type QuoteImportSummary = {
   rowsWithMissingUnit: number
   rowsWithInvalidUnitPrice: number
   rowsWithInvalidQuantity: number
-  totalLineAmount: number
+  totalNetAmount: number
 }
 
 type QuoteImportPreviewResult = {
@@ -295,9 +294,9 @@ function App() {
               <div className="col-sm-6 col-xl-3">
                 <div className="card h-100 shadow-sm">
                   <div className="card-body">
-                    <div className="text-body-secondary">Total line amount</div>
+                    <div className="text-body-secondary">Total net amount</div>
                     <div className="fs-3 fw-semibold">
-                      {formatMoney(preview.summary.totalLineAmount)}
+                      {formatMoney(preview.summary.totalNetAmount)}
                     </div>
                   </div>
                 </div>
@@ -356,15 +355,14 @@ function App() {
                       <th scope="col">SMILES</th>
                       <th scope="col">Molecular Weight</th>
                       <th scope="col">Unit</th>
-                      <th scope="col">Normalized Unit</th>
                       <th scope="col">Unit Price</th>
                       <th scope="col">Quantity</th>
                       <th scope="col">Discount (USD)</th>
+                      <th scope="col">Discount %</th>
                       <th scope="col">Net Price (USD)</th>
                       <th scope="col">Purity</th>
                       <th scope="col">IUPAC</th>
                       <th scope="col">Compliance</th>
-                      <th scope="col">Line Total</th>
                       <th scope="col">Status</th>
                       <th scope="col">Errors</th>
                     </tr>
@@ -384,15 +382,14 @@ function App() {
                         <td className="font-monospace">{item.smiles || '—'}</td>
                         <td>{formatNumber(item.molecularWeight)}</td>
                         <td>{item.unit || '—'}</td>
-                        <td>{item.normalizedUnit || '—'}</td>
                         <td>{formatMoney(item.unitPrice)}</td>
                         <td>{formatNumber(item.quantity)}</td>
                         <td>{formatMoney(item.discountUsd)}</td>
+                        <td>{item.discountPercent.toFixed(2)}%</td>
                         <td>{formatMoney(item.netPriceUsd)}</td>
                         <td>{item.purity || '—'}</td>
                         <td>{item.iupac || '—'}</td>
                         <td>{item.compliance || '—'}</td>
-                        <td>{formatMoney(item.lineTotal)}</td>
                         <td>
                           <span
                             className={`badge ${
