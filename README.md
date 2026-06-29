@@ -1,33 +1,49 @@
-# React + TypeScript + Vite
+# Frontend Molport
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Technology stack
 
-Currently, two official plugins are available:
+* React
+* TypeScript
+* Vite
+* Bootstrap
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Requirements
 
-## React Compiler
+To build and run the frontend project, the following is required:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Installed Node.js
+* npm package manager
 
-## Expanding the Oxlint configuration
+The project dependencies are already described in `package.json`.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Before running the application for the first time, install the dependencies:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-"# FrontMolport" 
+## How to run the application
+
+To run the frontend application, open the frontend project folder and execute:
+
+```bash
+npm run dev
+```
+
+After that, Vite will start the development server and show the local address in the terminal.
+
+Open this address in the browser to use the application.
+
+## AI tools usage
+
+Codex was also used for the frontend.
+
+It helped create the minimum required UI faster.
+
+The tool worked better with the frontend than with the backend, because there was no need to implement complex logic in this part of the project.
+
+## What I would improve with more time
+
+With more time, I would improve the data table by adding filtering and search options. This would make it easier to find and view the needed rows and fields.
+
+Also, if the backend was developed further, I would add a full CRUD flow for quote items.
